@@ -6,12 +6,13 @@ class SecondClass extends StatefulWidget {
 }
 
 class _SecondClassState extends State<SecondClass> {
+  final _formKey = GlobalKey<FormState>();
+
   String maritalStatus = 'soltero';
   bool termsChecked = true;
-
   String? selectedLocation;
 
-  List<String> locations = ['A', 'B', 'C', 'D'];
+  final List<String> locations = ['A', 'B', 'C', 'D'];
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +31,7 @@ class _SecondClassState extends State<SecondClass> {
           child: Container(
             margin: const EdgeInsets.symmetric(horizontal: 10.0),
             child: Form(
+              key: _formKey,
               child: Column(
                 children: <Widget>[
                   TextFormField(
@@ -37,6 +39,12 @@ class _SecondClassState extends State<SecondClass> {
                       labelText: 'Ingrese su nombre',
                       hintText: 'Nombre',
                     ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor ingrese un nombre';
+                      }
+                      return null;
+                    },
                   ),
 
                   TextFormField(
@@ -45,6 +53,15 @@ class _SecondClassState extends State<SecondClass> {
                       labelText: 'Ingrese su edad',
                     ),
                     keyboardType: TextInputType.number,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor ingrese su edad';
+                      }
+                      if (int.tryParse(value) == null) {
+                        return 'Por favor ingrese un número válido';
+                      }
+                      return null;
+                    },
                   ),
 
                   TextFormField(
@@ -53,6 +70,15 @@ class _SecondClassState extends State<SecondClass> {
                       hintText: 'Contraseña',
                       labelText: 'Ingrese su contraseña',
                     ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor ingrese una contraseña';
+                      }
+                      if (value.length < 6) {
+                        return 'La contraseña debe tener al menos 6 caracteres';
+                      }
+                      return null;
+                    },
                   ),
 
                   /// Dropdown
@@ -126,7 +152,11 @@ class _SecondClassState extends State<SecondClass> {
                       foregroundColor: Colors.white,
                     ),
                     onPressed: () {
-                      debugPrint("Registro enviado");
+                      if (_formKey.currentState!.validate()) {
+                        debugPrint('Registro enviado');
+                      } else {
+                        debugPrint('Error en el formulario');
+                      }
                     },
                     child: const Text('Registrarse'),
                   ),
