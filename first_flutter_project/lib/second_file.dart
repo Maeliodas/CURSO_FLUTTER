@@ -20,7 +20,7 @@ class SecondClass extends StatelessWidget {
                 focal: Alignment(-0.1, 0.3)
               )
             ),
-            color: lightPurpleColor,
+            //color: lightPurpleColor,
             child: Center(
               child: Text(generateNumbers(), textDirection: TextDirection.ltr,)
             )
