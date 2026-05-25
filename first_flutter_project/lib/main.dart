@@ -2,6 +2,6 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(
-    Text("Esto es un texto")
+    Text("Esto es un texto", textDirection: TextDirection.ltr,)
   );
 }
