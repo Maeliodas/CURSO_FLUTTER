@@ -7,7 +7,7 @@ class SecondClass extends StatelessWidget {
     return Material(
           color: Colors.yellow,
           child: Center(
-            child: Text("Esto es un texto", textDirection: TextDirection.ltr,)
+            child: Text("Esto es eso", textDirection: TextDirection.ltr,)
           )
         );
   }

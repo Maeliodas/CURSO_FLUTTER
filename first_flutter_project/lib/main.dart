@@ -13,7 +13,7 @@ class MyClass extends StatelessWidget {
           title: Text("Title"),
         ),
         body: SecondClass()
-      ),
+      )
     );
   }
 
