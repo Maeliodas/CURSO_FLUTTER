@@ -9,8 +9,11 @@ void main() {
         appBar: AppBar(
           title: Text("Title"),
         ),
-        body:Center(
-          child: Text("Esto es un texto", textDirection: TextDirection.ltr,)
+        body: Material(
+          color: Colors.green,
+          child: Center(
+            child: Text("Esto es un texto", textDirection: TextDirection.ltr,)
+          ),
         ),
       ),
     ),
