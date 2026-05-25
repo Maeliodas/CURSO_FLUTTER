@@ -12,6 +12,14 @@ class SecondClass extends StatelessWidget {
             height: 500.0,
             width: 300.0,
             alignment: Alignment(-1,-1),
+            decoration: BoxDecoration(
+              gradient: RadialGradient(
+                colors: [Colors.green, Colors.blue, Colors.orange, Colors.pink],
+                stops: [0.2, 0.5, 0.7, 1],
+                center: Alignment(0.1, 0.2),
+                focal: Alignment(-0.1, 0.3)
+              )
+            ),
             color: lightPurpleColor,
             child: Center(
               child: Text(generateNumbers(), textDirection: TextDirection.ltr,)
