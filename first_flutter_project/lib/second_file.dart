@@ -11,6 +11,8 @@ class SecondClass extends StatelessWidget {
           child: Container(
             height: 500.0,
             width: 300.0,
+            alignment: Alignment(-1,-1),
+            color: Colors.green,
             child: Center(
               child: Text(generateNumbers(), textDirection: TextDirection.ltr,)
             )
