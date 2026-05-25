@@ -5,6 +5,7 @@ void main() {
     MaterialApp(
       title: "Mi flutter app",
       home: Scaffold(
+        backgroundColor: Colors.yellow,
         appBar: AppBar(
           title: Text("Title"),
         ),
