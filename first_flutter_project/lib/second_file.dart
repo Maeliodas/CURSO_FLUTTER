@@ -11,7 +11,7 @@ class SecondClass extends StatelessWidget {
           child: Container(
             height: 500.0,
             width: 300.0,
-            alignment: Alignment(-1,-1),
+            alignment: Alignment(0,0),
             decoration: BoxDecoration(
               gradient: RadialGradient(
                 colors: [Colors.green, Colors.blue, Colors.orange, Colors.pink],
