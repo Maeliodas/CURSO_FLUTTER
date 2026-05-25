@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:first_flutter_project/screens/first_screen.dart';
-import 'package:first_flutter_project/screens/second_screen.dart';
 
-void main() => runApp(MyClass() );
+void main() => runApp(MyApp() );
 
 class MyClass extends StatelessWidget {
   @override
@@ -10,13 +8,10 @@ class MyClass extends StatelessWidget {
     
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'My flutter app',
-      routes: <String, WidgetBuilder>{
-        '/screen1': (BuildContext context) => SecondClass(),
-        '/screen2': (BuildContext context) => SecondPageClass(),
-        
-      },
-      home: SecondClass(),
+      title: 'Demo de Flutter',
+      theme: ThemeData(
+        primarySwatch: Colors.blue
+      ),
     );
   }
 }
