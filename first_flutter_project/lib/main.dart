@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:first_flutter_project/second_file.dart';
+import 'package:first_flutter_project/screens/first_screen.dart';
 void main() => runApp(MyClass() );
 
 class MyClass extends StatelessWidget {
@@ -9,18 +9,6 @@ class MyClass extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Mi flutter app",
       home: Scaffold(
-        appBar: AppBar(
-          elevation: 10.0,
-          title:Center(child: Text("Title"),
-          ) ,
-          actions: <Widget>[
-            Icon(Icons.settings)
-          ],
-          bottom: PreferredSize(
-            preferredSize: Size.fromHeight(40.0),
-            child: Text("Esto es texto en la appbar"),
-          ),
-        ),
         body: SecondClass()
       )
     );
