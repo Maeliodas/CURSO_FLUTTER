@@ -10,7 +10,9 @@ class MyClass extends StatelessWidget {
       title: "Mi flutter app",
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Title"),
+          elevation: 10.0,
+          title:Center(child: Text("Title"),
+          ) ,
           actions: <Widget>[
             Icon(Icons.settings)
           ],
