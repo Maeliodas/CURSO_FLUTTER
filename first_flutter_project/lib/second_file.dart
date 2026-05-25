@@ -8,8 +8,12 @@ class SecondClass extends StatelessWidget {
 
     return Material(
           color: Colors.yellow,
-          child: Center(
-            child: Text(generateNumbers(), textDirection: TextDirection.ltr,)
+          child: Container(
+            height: 500.0,
+            width: 300.0,
+            child: Center(
+              child: Text(generateNumbers(), textDirection: TextDirection.ltr,)
+            )
           )
         );
   }
