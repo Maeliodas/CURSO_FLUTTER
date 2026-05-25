@@ -8,20 +8,21 @@ class SecondClass extends StatefulWidget {
 class _SecondClassState extends State<SecondClass> {
   final _formKey = GlobalKey<FormState>();
 
+  String name = '';
+  int age = 0;
+  String password = '';
   String maritalStatus = 'soltero';
   bool termsChecked = true;
-  String? selectedLocation;
 
-  final List<String> locations = ['A', 'B', 'C', 'D'];
+  List<String> locations = ['A', 'B', 'C', 'D'];
+  String? selectedLocation;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         elevation: 10.0,
-        title: const Center(
-          child: Text('Registro'),
-        ),
+        title: const Center(child: Text('Registro')),
         actions: const <Widget>[
           Icon(Icons.settings),
         ],
@@ -41,9 +42,14 @@ class _SecondClassState extends State<SecondClass> {
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Por favor ingrese un nombre';
+                        return 'Por favor ingrese su nombre';
                       }
                       return null;
+                    },
+                    onSaved: (value) {
+                      setState(() {
+                        name = value!;
+                      });
                     },
                   ),
 
@@ -62,6 +68,11 @@ class _SecondClassState extends State<SecondClass> {
                       }
                       return null;
                     },
+                    onSaved: (value) {
+                      setState(() {
+                        age = int.parse(value!);
+                      });
+                    },
                   ),
 
                   TextFormField(
@@ -74,18 +85,21 @@ class _SecondClassState extends State<SecondClass> {
                       if (value == null || value.isEmpty) {
                         return 'Por favor ingrese una contraseña';
                       }
-                      if (value.length < 6) {
-                        return 'La contraseña debe tener al menos 6 caracteres';
+                      if (value.length < 8) {
+                        return 'La contraseña debe tener más de 8 caracteres';
                       }
                       return null;
+                    },
+                    onSaved: (value) {
+                      setState(() {
+                        password = value!;
+                      });
                     },
                   ),
 
                   /// Dropdown
                   DropdownButton<String>(
-                    hint: const Text(
-                      'Seleccione la ciudad donde vive',
-                    ),
+                    hint: const Text('Seleccione la ciudad donde vive'),
                     value: selectedLocation,
                     items: locations.map((location) {
                       return DropdownMenuItem(
@@ -93,9 +107,9 @@ class _SecondClassState extends State<SecondClass> {
                         child: Text(location),
                       );
                     }).toList(),
-                    onChanged: (String? value) {
+                    onChanged: (newvalue) {
                       setState(() {
-                        selectedLocation = value;
+                        selectedLocation = newvalue;
                       });
                     },
                   ),
@@ -152,11 +166,7 @@ class _SecondClassState extends State<SecondClass> {
                       foregroundColor: Colors.white,
                     ),
                     onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        debugPrint('Registro enviado');
-                      } else {
-                        debugPrint('Error en el formulario');
-                      }
+                      onPressedSubmit(context);
                     },
                     child: const Text('Registrarse'),
                   ),
@@ -167,5 +177,18 @@ class _SecondClassState extends State<SecondClass> {
         ),
       ),
     );
+  }
+
+  void onPressedSubmit(BuildContext context) {
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+
+      print('Nombre: $name');
+      print('Edad: $age');
+      print('Contraseña: $password');
+      print('Ciudad: $selectedLocation');
+      print('Estado civil: $maritalStatus');
+      print('Aceptó términos: $termsChecked');
+    }
   }
 }
