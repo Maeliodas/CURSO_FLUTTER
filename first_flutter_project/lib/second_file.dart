@@ -21,9 +21,17 @@ class SecondClass extends StatelessWidget {
               )
             ),
             //color: lightPurpleColor,
-            child: Center(
-              child: Text(generateNumbers(), textDirection: TextDirection.ltr,)
-            )
+              child: GestureDetector(
+                onTap: (){
+                  ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
+                    content: new Text("Presionado"),
+                    duration: Duration(seconds: 2),
+                  )
+                  );            
+                },
+                 child: Text(generateNumbers(), textDirection: TextDirection.ltr,
+                 )
+              )
           )
         );
   }
