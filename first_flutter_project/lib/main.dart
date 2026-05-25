@@ -11,6 +11,13 @@ class MyClass extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: Text("Title"),
+          actions: <Widget>[
+            Icon(Icons.settings)
+          ],
+          bottom: PreferredSize(
+            preferredSize: Size.fromHeight(40.0),
+            child: Text("Esto es texto en la appbar"),
+          ),
         ),
         body: SecondClass()
       )
